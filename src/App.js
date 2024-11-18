@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { Home } from "./components/Home";
+import { Information } from "./components/Information";
 
 function App() {
+  // this allows us to navigate to whatever url path we want by calling navigate('your-path') -> localhost:3000/your-path
+  const navigate = useNavigate();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>My App</h1>
+      <button onClick={() => navigate('/')}>Home</button>
+      <button onClick={() => navigate('/information')}>Information</button>
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="information" element={<Information />} />
+      </Routes>
     </div>
   );
 }
